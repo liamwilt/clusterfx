@@ -1,5 +1,5 @@
 # clusterfx
-An interactive stimulus designed to assess eye-hand tracking capabilities with duration-of-accuracy outputs.
+An interactive stimulus designed to assess eye-hand tracking capabilities with accuracy-of-selection outputs.
 # Install
 # Usage
 # License
