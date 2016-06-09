@@ -1,5 +1,5 @@
 # colourdi
-An interactive stimulus designed to assess eye-hand tracking capabilities with accuracy-of-selection outputs.
+A stimulus designed to assess eye tracking and attention capabilities with stimuli of randomized motion and colour values.
 # Install
 # Usage
 # License
