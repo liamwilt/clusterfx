@@ -37,7 +37,7 @@ Circle initCircle(Circle circle);
  */
 
 void initCircleArray(Circle circle[], int length );
-/**
+/*
  * initialize array of circles 
  * @param circle array
  * @param length length of the array
@@ -65,8 +65,7 @@ int main( void )
 { 
     GLFWwindow *window;
 
-    static GLfloat last = 0;
-    // color changing time 
+    static GLfloat last = 0; 
     static GLfloat lastColorChange = 0;
     GLfloat timer = glfwGetTime();
     last = timer;
@@ -77,7 +76,7 @@ int main( void )
     int length = 5;
     int i;
     
-    // time to wait before  moving the circle 
+    // time to wait before moving the circle 
     GLfloat sleep = 0.01;
     // time to wait before changing color of circles
     GLfloat colorChange = 5.0;
@@ -97,7 +96,7 @@ int main( void )
     }
     
     // Create a windowed mode window and its OpenGL context
-    window = glfwCreateWindow( SCREEN_WIDTH, SCREEN_HEIGHT, "Cluster", NULL, NULL );
+    window = glfwCreateWindow( SCREEN_WIDTH, SCREEN_HEIGHT, "di", NULL, NULL );
     
     if ( !window )
     {
@@ -111,16 +110,13 @@ int main( void )
     // set up port of view to use pixel unit 
     glViewport( 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT ); 
     glMatrixMode( GL_PROJECTION ); 
-    // put all thing at botom left of the windows 
+ 
     glLoadIdentity( ); 
     glOrtho( 0, SCREEN_WIDTH, 0, SCREEN_HEIGHT, 0, 1 ); 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity( ); 
     
     glfwSetKeyCallback(window, key_callback);
-    
-    // set background color to red
-    // glClearColor(1.0f, 0.0f, 0.0f, 0.0f); 
     
     while ( !glfwWindowShouldClose( window ) )
     {
@@ -131,7 +127,7 @@ int main( void )
         // whether we should change the color 
         if (timer - lastColorChange > colorChange) {
             lastColorChange = timer;    
-            // set all circle to blue
+            // set all circles to blue
             for (i = 0; i < length; i++) {
                 circles[i].colour[0] = 0;
                 circles[i].colour[1] = 0;
@@ -139,35 +135,32 @@ int main( void )
             }
             // get a random index
             chosenCircle = rand() % length;
-            // set green color to the chosen one
+            // set green color to the chosen circle
             circles[chosenCircle].colour[0] = 0;
             circles[chosenCircle].colour[1] = 255;
             circles[chosenCircle].colour[2] = 0;
         }
         
-        // whether we should move the circle 
+        // whether we should move a circle 
         if (timer - last > sleep) {
             last = timer;  
-            // update position and draw all of them
+            // update position and draw all circles
             for (i = 0; i < length; i++) {
                 moves(circles, length, i);
                 drawCircle(circles[i]);
             }
         } else {
-            // redraw all of them
+            // redraw all circles
             for (i = 0; i < length; i++) {               
                 drawCircle(circles[i]);
             }
         }
                 
-        // Swap front and back buffers
         glfwSwapBuffers( window );        
-        // Poll for and process events
         glfwPollEvents( );
     }
 
     glfwDestroyWindow(window);
-    // terminate the GUI
     glfwTerminate( );
     
     return 0;
@@ -182,11 +175,10 @@ void moves(Circle circle[], int length, int index){
     c = circle[index] ;
     
     // the current circle will have to duck all previous considered  circle 
-
     for (i = 0; i < index; i++) {  
-        // they crash
+        // they collide
         if (isCrashed(c, circle[i]) == 1) {               
-            // 2 circles will try to get rid of each other 
+            // 2 circles will travel in opposite vectors, post-collision 
             c.xVector = (c.x - circle[i].x)  / RADIUS * (rand() % DISTANCE);
             c.yVector = (c.y - circle[i].y)  / RADIUS * (rand() % DISTANCE);
             circle[i].xVector = (-1.0) * c.xVector ;
@@ -194,11 +186,11 @@ void moves(Circle circle[], int length, int index){
         }  
     }
     
-    // the circle  won't move along horizontal line 
+    // the circle won't move along horizontal line 
     while (c.xVector == 0.0) {
         c.xVector = (rand() % DISTANCE) * direction[rand() % 2] ;
     }
-    // the circle  won't move along vertical line 
+    // the circle won't move along vertical line 
     while (c.yVector == 0.0) {
          c.yVector = (rand() % DISTANCE) * direction[rand() % 2];    
     }
@@ -250,13 +242,12 @@ void initCircleArray(Circle circle[], int length ){
     circle[3].y = RADIUS;
     circle[4].y = SCREEN_HEIGHT / 2; 
     
-    // init circles    
+    // initialize circles    
     for (i = 0; i < length; i++) {
         circle[i] = initCircle(circle[i]);  
     } 
     
-    // set  color of the central circle to green
-    
+    // set color of the central circle to green
     circle[4].colour[0] = 0;
     circle[4].colour[1] = 255;
     circle[4].colour[2] = 0; 
