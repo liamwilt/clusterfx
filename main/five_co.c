@@ -290,7 +290,7 @@ void writeToFile(FILE * out, Circle circle, double timer, GLFWwindow *window) {
     
     // we will get update if we move the cursor on the screen         
     cX = xpos;
-    cY = SCREEN_HEIGHT - ypos - RADIUS;
+    cY = SCREEN_HEIGHT - ypos;
     
     // get distance from the cursor to the  center of the circle
     distance = sqrt((cX - circle.x) *
