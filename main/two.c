@@ -232,22 +232,16 @@ void initCircleArray(Circle circle[], int length ){
     // set position
     circle[0].x = RADIUS;
     circle[1].x = SCREEN_WIDTH - RADIUS;
-    //circle[2].x = RADIUS;
-    //circle[3].x = SCREEN_WIDTH - RADIUS;
-    //circle[4].x = SCREEN_WIDTH / 2;
     
     circle[0].y = SCREEN_HEIGHT - RADIUS;
     circle[1].y = RADIUS;
-    //circle[2].y = RADIUS;
-    //circle[3].y = RADIUS;
-    //circle[4].y = SCREEN_HEIGHT / 2; 
     
     // initialize circles    
     for (i = 0; i < length; i++) {
         circle[i] = initCircle(circle[i]);  
     } 
     
-    // set color of the central circle to green
+    // set color of the upper right circle to green
     circle[1].colour[0] = 0;
     circle[1].colour[1] = 255;
     circle[1].colour[2] = 0; 
