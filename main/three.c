@@ -233,14 +233,10 @@ void initCircleArray(Circle circle[], int length ){
     circle[0].x = RADIUS;
     circle[1].x = SCREEN_WIDTH - RADIUS;
     circle[2].x = SCREEN_WIDTH / 2;
-    //circle[3].x = SCREEN_WIDTH - RADIUS;
-    //circle[4].x = SCREEN_WIDTH / 2;
     
     circle[0].y = SCREEN_HEIGHT - RADIUS;
     circle[1].y = RADIUS;
     circle[2].y = SCREEN_HEIGHT / 2;
-    //circle[3].y = RADIUS;
-    //circle[4].y = SCREEN_HEIGHT / 2; 
     
     // initialize circles    
     for (i = 0; i < length; i++) {
