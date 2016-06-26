@@ -43,7 +43,7 @@ void initCircleArray(Circle circle[], int length );
  * @param length length of the array
  */
 
-int Collided(Circle c1, Circle c2);
+int checkCollision(Circle c1, Circle c2);
 /**
  * @param c1 circle 
  * @param c2 circle
@@ -177,7 +177,7 @@ void moves(Circle circle[], int length, int index){
     // the current circle will have to avoid all previously considered circles 
     for (i = 0; i < index; i++) {  
         // they collide
-        if (Collided(c, circle[i]) == 1) {               
+        if (checkCollision(c, circle[i]) == 1) {               
             // 2 circles will travel in opposite vectors, post-collision 
             c.xVector = (c.x - circle[i].x)  / RADIUS * (rand() % DISTANCE);
             c.yVector = (c.y - circle[i].y)  / RADIUS * (rand() % DISTANCE);
@@ -217,7 +217,7 @@ void moves(Circle circle[], int length, int index){
 }
 
 
-int Collided(Circle c1, Circle c2){
+int checkCollision(Circle c1, Circle c2){
     GLfloat distance = sqrt((c1.x - c2.x) * (c1.x - c2.x) 
             + (c1.y - c2.y) * (c1.y - c2.y) );
     if (distance <= c1.radius * 2.0) {
