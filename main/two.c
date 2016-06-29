@@ -8,9 +8,10 @@
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
 #define M_PI 3.141592653
-#define SIDE_NUM    36      // numnber of triangles we use to draw a circle  
+#define SIDE_NUM    36      // number of 'sides' (or triangles) used to draw the circles  
 #define RADIUS      100     // radius of a circle 
 #define DISTANCE    5       // max length of a movement 
+#define TOTAL_TIME  5       // 5 minutes per trial
 
 struct Circle{
     GLfloat x;              // center points
@@ -30,33 +31,30 @@ void drawCircle( Circle circle );
 static void key_callback(GLFWwindow *w, int key, int scancode, int action, int mods);
 
 Circle initCircle(Circle circle);
-/**
- * initialize a circle 
+/** 
  * @param circle
  * @return an initialized circle 
  */
 
 void initCircleArray(Circle circle[], int length );
-/*
- * initialize array of circles 
+/* 
  * @param circle array
- * @param length length of the array
+ * @param length        length of the array
  */
 
 int testCollision(Circle c1, Circle c2);
 /**
- * @param c1 circle 
- * @param c2 circle
- * @return 0 if they don't crash each other 
- *          1 if they crash
+ * @param c1            circle 
+ * @param c2            circle
+ * @return 0            if they don't collide with each other 
+ *         1            if they collide
  */
 
 void moves(Circle circle[], int length, int index);
-/**
- * move each circle in the array 
+/** 
  * @param circle array
- * @param length length of array
- * @param index index of current considered circle
+ * @param length        length of array
+ * @param index         index of current considered circle
  */
 
 static void error(int error, const char *desc);
@@ -68,6 +66,8 @@ int main( void )
     static GLfloat last = 0; 
     static GLfloat lastColorChange = 0;
     GLfloat timer = glfwGetTime();
+    GLfloat start;
+    start = timer;
     last = timer;
     lastColorChange = timer;
     
@@ -78,6 +78,8 @@ int main( void )
     
     // time to wait before moving the circle 
     GLfloat sleep = 0.01;
+    // total running time
+    GLfloat total = TOTAL_TIME * 60; // 1 minutes has 60 seconds
     // time to wait before changing color of circles
     GLfloat colorChange = 5.0;
     // index of chosen circle 
@@ -118,8 +120,8 @@ int main( void )
     
     glfwSetKeyCallback(window, key_callback);
     
-    while ( !glfwWindowShouldClose( window ) )
-    {
+    while (timer - start < total
+            && !glfwWindowShouldClose(window)) {
         glClear( GL_COLOR_BUFFER_BIT );
 
         timer = glfwGetTime();
