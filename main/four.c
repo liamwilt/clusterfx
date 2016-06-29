@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "di.h"
+
 #define RADIUS      66      // radius of a circle
 
 int main( void )
