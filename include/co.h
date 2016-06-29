@@ -11,8 +11,8 @@ struct Circle {
     GLfloat y;
     GLfloat z;
     GLfloat radius;         // circle radius
-    GLint numberOfSides;    // number of side
-    GLfloat xVector;        // horizontal vecotr
+    GLint numberOfSides;    // number of 'sides' (or triangles) used to draw the circles
+    GLfloat xVector;        // horizontal vector
     GLfloat yVector;        // vertical vector
     GLfloat colour[3];      // color of the circle
 };
@@ -31,32 +31,29 @@ static void key_callback(GLFWwindow *w, int key, int scancode, int action, int m
 
 Circle initCircle(Circle circle);
 /**
- * initialize a circle 
  * @param circle
  * @return an initialized circle 
  */
 
 void initCircleArray(Circle circle[], int length);
 /**
- * initialize array of circles 
  * @param circle array
- * @param length length of the array
+ * @param length    length of the array
  */
 
 int testCollision(Circle c1, Circle c2);
 /**
- * @param c1 circle 
- * @param c2 circle
- * @return 0 if they don't collide with each other 
- *          1 if they collide
+ * @param c1        circle 
+ * @param c2        circle
+ * @return 0        if they don't collide with each other 
+ *         1        if they collide
  */
 
 void moves(Circle circle[], int length, int index);
 /**
- * move each circle in the array 
- * @param circle array
- * @param length length of array
- * @param index index of current considered circle
+ * @param circle    array
+ * @param length    length of array
+ * @param index     index of current considered circle
  */
 
 static void error(int error, const char *desc);
@@ -64,22 +61,22 @@ static void error(int error, const char *desc);
 void writeData(FILE * out, GLfloat oX, GLfloat oY, GLfloat radius,
         GLfloat cX, GLfloat cY, double timer,
         GLfloat distance);
-/* 
- * out      --> output stream
- * oX       --> center of the circle X
- * oY       --> center of the circle Y
- * radius   --> radius of the circle 
- * cX       --> cursor position   
- * cY       --> cursor position      
- * timer    --> current time
- * distance --> distance from cursor to center of the circle 
+/** 
+ * @param out       output stream
+ * @param oX        center of the circle X
+ * @param oY        center of the circle Y
+ * @param radius    radius of the circle 
+ * @param cX        cursor position   
+ * @param cY        cursor position      
+ * @param timer     current time
+ * @param distance  distance from cursor to center of the circle 
  */
 
 int isCursorInTheChosenCircle();
 /**
  * 
- * @return 1 the cursor is in the chosen circle
- *          0 the cursor is out of the chosen circle 
+ * @return 1        the cursor is in the chosen circle
+ *         0       the cursor is out of the chosen circle 
  */
 
 
