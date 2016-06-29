@@ -8,16 +8,15 @@
 #include <AL/alc.h>
 #include <AL/alut.h>
 
-#define RADIUS      66      // radius of a circle 
-#define CIRCLE_NUM  4       // number of circles
+#define RADIUS 66
+#define CIRCLE_NUM 4
 
 #include "co.h"
 
 int main(void) {
 
-    // application time 
+    // for application time calculations 
     static GLfloat last = 0;
-    // window open time 
     GLfloat timer = glfwGetTime();
     GLfloat start;
     start = timer;
@@ -29,7 +28,7 @@ int main(void) {
     int i;
     int currentCircleIndex;
 
-    // time to wait before  moving the circle 
+    // time to wait before moving the circle 
     GLfloat sleep = 0.01;
     // total running time
     GLfloat total = TOTAL_TIME * 60; // 1 minutes has 60 seconds

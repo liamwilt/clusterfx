@@ -7,17 +7,16 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <AL/alut.h>
-  
-#define RADIUS      50      // radius of a circle 
-#define CIRCLE_NUM  5       // number of circles
+
+#define RADIUS 50
+#define CIRCLE_NUM 5
 
 #include "co.h"
 
 int main(void) {
 
-    // application time 
+    // for application time calculations
     static GLfloat last = 0;
-    // window open time 
     GLfloat timer = glfwGetTime();
     GLfloat start;
     start = timer;
@@ -29,7 +28,7 @@ int main(void) {
     int i;
     int currentCircleIndex;
 
-    // time to wait before  moving the circle 
+    // time to wait before moving the circle 
     GLfloat sleep = 0.01;
     // total running time
     GLfloat total = TOTAL_TIME * 60; // 1 minutes has 60 seconds
@@ -313,8 +312,8 @@ int testCollision(Circle c1, Circle c2) {
 
 void initCircleArray(Circle circle[], int length) {
     int i;
+    
     // set position
-
     circle[0].x = RADIUS;
     circle[1].x = SCREEN_WIDTH - RADIUS;
     circle[2].x = RADIUS;
