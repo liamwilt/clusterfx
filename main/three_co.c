@@ -54,7 +54,7 @@ int main(void) {
         return -1;
     }
 
-    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "five_co", NULL, NULL);
+    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "three_co", NULL, NULL);
 
     if (!window) {
         glfwTerminate();
@@ -126,9 +126,9 @@ int main(void) {
 }
 
 void playSound() {
-    char * sound [] = {"scale-a6.wav", "scale-c6.wav", "scale-c7.wav"
-        , "scale-d6.wav", "scale-e6.wav", "scale-f6.wav",
-        "scale-g6.wav", "scale-h6.wav"};
+    char * sound [] = {"Sounds/scale-a6.wav", "Sounds/scale-c6.wav", "Sounds/scale-c7.wav"
+        , "Sounds/scale-d6.wav", "Sounds/scale-e6.wav", "Sounds/scale-f6.wav",
+        "Sounds/scale-g6.wav", "Sounds/scale-h6.wav"};
     int index = rand() % 8;
     ALuint buffer, source;
     ALuint state;
@@ -314,12 +314,12 @@ void initCircleArray(Circle circle[], int length) {
     int i;
 
     // set position
-    circle[0].x = RADIUS;
-    circle[1].x = SCREEN_WIDTH - RADIUS;
+    circle[0].x = RADIUS + 5;
+    circle[1].x = SCREEN_WIDTH - RADIUS - 5;
     circle[2].x = SCREEN_WIDTH / 2;
     
-    circle[0].y = SCREEN_HEIGHT - RADIUS;
-    circle[1].y = RADIUS;
+    circle[0].y = SCREEN_HEIGHT - RADIUS - 5;
+    circle[1].y = RADIUS + 5;
     circle[2].y = SCREEN_HEIGHT / 2;
 
     // init circles    
