@@ -126,9 +126,9 @@ int main(void) {
 }
 
 void playSound() {
-    char * sound [] = {"scale-a6.wav", "scale-c6.wav", "scale-c7.wav"
-        , "scale-d6.wav", "scale-e6.wav", "scale-f6.wav",
-        "scale-g6.wav", "scale-h6.wav"};
+    char * sound [] = {"Sounds/scale-a6.wav", "Sounds/scale-c6.wav", "Sounds/scale-c7.wav"
+        , "Sounds/scale-d6.wav", "Sounds/scale-e6.wav", "Sounds/scale-f6.wav",
+        "Sounds/scale-g6.wav", "Sounds/scale-h6.wav"};
     int index = rand() % 8;
     ALuint buffer, source;
     ALuint state;
@@ -314,16 +314,16 @@ void initCircleArray(Circle circle[], int length) {
     int i;
     
     // set position
-    circle[0].x = RADIUS;
-    circle[1].x = SCREEN_WIDTH - RADIUS;
-    circle[2].x = RADIUS;
-    circle[3].x = SCREEN_WIDTH - RADIUS;
+    circle[0].x = RADIUS + 5;
+    circle[1].x = SCREEN_WIDTH - RADIUS - 5;
+    circle[2].x = RADIUS + 5;
+    circle[3].x = SCREEN_WIDTH - RADIUS - 5;
     circle[4].x = SCREEN_WIDTH / 2;
 
-    circle[0].y = SCREEN_HEIGHT - RADIUS;
-    circle[1].y = SCREEN_HEIGHT - RADIUS;
-    circle[2].y = RADIUS;
-    circle[3].y = RADIUS;
+    circle[0].y = SCREEN_HEIGHT - RADIUS - 5;
+    circle[1].y = SCREEN_HEIGHT - RADIUS - 5;
+    circle[2].y = RADIUS + 5;
+    circle[3].y = RADIUS + 5;
     circle[4].y = SCREEN_HEIGHT / 2;
 
     // init circles    
