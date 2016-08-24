@@ -8,14 +8,14 @@
 #include <AL/alc.h>
 #include <AL/alut.h>
 
-#define RADIUS 83.3
-#define CIRCLE_NUM 3
+#define RADIUS 66
+#define CIRCLE_NUM 4
 
 #include "co.h"
 
 int main(void) {
 
-    // for application time calculations
+    // for application time calculations 
     static GLfloat last = 0;
     GLfloat timer = glfwGetTime();
     GLfloat start;
@@ -54,7 +54,7 @@ int main(void) {
         return -1;
     }
 
-    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "three_co", NULL, NULL);
+    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "four_co", NULL, NULL);
 
     if (!window) {
         glfwTerminate();
@@ -126,9 +126,9 @@ int main(void) {
 }
 
 void playSound() {
-    char * sound [] = {"scale-a6.wav", "scale-c6.wav", "scale-c7.wav"
-        , "scale-d6.wav", "scale-e6.wav", "scale-f6.wav",
-        "scale-g6.wav", "scale-h6.wav"};
+    char * sound [] = {"Sounds/scale-a6.wav", "Sounds/scale-c6.wav", "Sounds/scale-c7.wav"
+        , "Sounds/scale-d6.wav", "Sounds/scale-e6.wav", "Sounds/scale-f6.wav",
+        "Sounds/scale-g6.wav", "Sounds/scale-h6.wav"};
     int index = rand() % 8;
     ALuint buffer, source;
     ALuint state;
@@ -315,24 +315,26 @@ void initCircleArray(Circle circle[], int length) {
 
     // set position
     circle[0].x = RADIUS + 5;
-    circle[1].x = SCREEN_WIDTH - RADIUS - 5;
-    circle[2].x = SCREEN_WIDTH / 2;
+    circle[1].x = RADIUS + 5;
+    circle[2].x = SCREEN_WIDTH - RADIUS - 5;
+    circle[3].x = SCREEN_WIDTH - RADIUS - 5;
     
-    circle[0].y = SCREEN_HEIGHT - RADIUS - 5;
-    circle[1].y = RADIUS + 5;
-    circle[2].y = SCREEN_HEIGHT / 2;
+    circle[0].y = RADIUS + 5;
+    circle[1].y = SCREEN_HEIGHT - RADIUS - 5;
+    circle[2].y = RADIUS + 5;
+    circle[3].y = SCREEN_HEIGHT - RADIUS - 5;
 
     // init circles    
     for (i = 0; i < length; i++) {
         circle[i] = initCircle(circle[i]);
     }
 
-    // set  color of the central circle to green
-    circle[2].colour[0] = 0;
-    circle[2].colour[1] = 255;
-    circle[2].colour[2] = 0;
-    chosenCircleIndex = 2;
-    currentCircle = &circle[2];
+    // set  color of the lower right circle to green
+    circle[3].colour[0] = 0;
+    circle[3].colour[1] = 255;
+    circle[3].colour[2] = 0;
+    chosenCircleIndex = 3;
+    currentCircle = &circle[3];
 }
 
 Circle initCircle(Circle circle) {
